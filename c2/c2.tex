@@ -1,0 +1,39 @@
+% !TeX root = ../diss.tex
+\chapter{Metoda Filon}
+\label{cap:cap2}
+
+\section{Quadrauture}
+\subsection{General}
+%Rectangle rule
+
+\begin{equation}
+    \int_a^b f(x) dx \approx (b-a) f\left(\frac{a+b}{2}\right)
+\end{equation}
+
+%Trapezoidal rule
+
+\begin{equation}
+    \int_a^b f(x) dx \approx (b-a) \left(\frac{f(a)+f(b)}{2}\right)
+\end{equation}
+
+%Composite Trapezoidal rule
+\begin{equation}
+    \int_a^b f(x) dx \approx \frac{b-a}{n}\left(\frac{f(a)}{2}+\sum_{k=1}^{n-1}\left(f\left(a+k\frac{b-a}{n}\right)\right)+\frac{f(b)}{2}\right)
+\end{equation}
+
+\section{Integrals of oscillatory functions}
+
+\subsection{Constant oscilation}
+
+\begin{equation}
+    I[a,b] = \int_a^b f(x)e^{i\omega x}dx ss
+\end{equation}
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../th"
+%%% End:
