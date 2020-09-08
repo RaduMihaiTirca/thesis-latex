@@ -1,5 +1,105 @@
+\documentclass[12pt,openright,twoside]{book}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{pdflscape}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{pdflscape}
+%%\usepackage{tabu}
+\usepackage{caption}
+%%\usepackage{floatrow}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{wrapfig}
+\usepackage{bm}
+\usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+\usepackage{siunitx} % Formats the units and values
+\usepackage{pgfplotstable} % Generates table from .csv
+\usepackage{physics}
 
-\documentclass[twoside,12pt,a4paper]{book}
+\titleformat{\chapter}
+  {\Large\bfseries} % format
+  {}                % label
+  {0pt}             % sep
+  {\LARGE}           % before-code
+\renewcommand{\figurename}{\textbf{Figure}}
+\renewcommand{\tablename}{\textbf{Table}}
+\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
+
+\renewcommand{\contentsname}{{\Huge Table of contents}}
+\renewcommand{\chaptername}{{\Huge  }}
+%\renewcommand{\thebibliography}{\Bibliografie}
+
+
+\geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=25.0mm,
+ right=25.0mm,
+ top=25.0mm,
+ bottom=30.0mm,
+ }
+
+ \setcounter{tocdepth}{3}
+%level -1: part, 0: chapter, 1: section, etc.
+
+\sisetup{
+  round-mode          = places, % Rounds numbers
+  round-precision     = 2, % to 2 places
+}
+
+\begin{document}
+
+\input{title/title}
+\newpage
+\vspace*{\fill}
+\thispagestyle{empty}
+
+
+
+
+\newpage
+\input{ci/ci}
+\newpage
+\thispagestyle{empty} \vspace*{\fill} \tableofcontents
+
+\setlength\parindent{0pt}
+
+
+
+\setcounter{page}{0}
+
+%% this comand remove indent
+
+\newpage
+
+ \pagenumbering{arabic}
+\input{c1/c1}
+\input{c2/c2}
+\input{c3/c3}
+\input{c4/c4}
+
+
+
+
+
+
+\renewcommand{\contentsname}{Referin\c{t}e}
+\renewcommand\bibname{Referin\c{t}e} %
+\addcontentsline{toc}{chapter}{Referin\c{t}e}
+\markboth{Referin\c{t}e}{Referin\c{t}e} %
+\bibliographystyle{unsrt}
+%
+%\bibliographystyle{plain}
+
+\bibliography{Referinte}
+
+
+\end{document}
+
+
+\documentclass[twoside,12pt,a4paper,fleqn]{book}
 \usepackage{calc}
 
 \setlength{\topmargin}{0.15in}
@@ -18,8 +118,9 @@
 \usepackage{lastpage}
 \usepackage[nottoc]{tocbibind}
 \usepackage{fancyhdr}
-%\usepackage[sectionbib]{chapterbib}                                                                                                                                                                                                                                                                                                                                                        
+%\usepackage[sectionbib]{chapterbib}
 \usepackage[hyperindex,breaklinks=true]{hyperref}
+\usepackage[latin1]{inputenc}
 \pagestyle{empty}
 
 
@@ -33,6 +134,7 @@
 \setcounter{page}{1}
 \renewcommand{\thepage}{\roman{page}}
 \renewcommand{\chaptername}{\Large{Capitolul}}
+\renewcommand{\contentsname}{\Large{Cuprins}}
 \renewcommand{\figurename}{Figura}
 \renewcommand{\tablename}{Tabelul}
 \renewcommand{\listfigurename}{Lista de figuri}
@@ -58,14 +160,14 @@
 
 \setcounter{page}{1}
 
-%\pagestyle{fancy}                                                                                                                                                                                                                                                                                                                                                                          
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}                                                                                                                                                                                                                                                                                                                                            
-%\renewcommand{\sectionmark}[1]{\markright{#1}}                                                                                                                                                                                                                                                                                                                                             
-%\fancyhead[LO]{\bfseries\nouppercase\leftmark}                                                                                                                                                                                                                                                                                                                                             
-%\fancyhead[RO]{\bfseries\thepage}%\ / \pageref{LastPage}}                                                                                                                                                                                                                                                                                                                                  
-%\fancyhead[RE]{\bfseries\nouppercase\rightmark}                                                                                                                                                                                                                                                                                                                                            
-%\fancyhead[LE]{\bfseries\thepage}%\ / \pageref{LastPage}}                                                                                                                                                                                                                                                                                                                                  
-%\fancyfoot{}                                                                                                                                                                                                                                                                                                                                                                               
+%\pagestyle{fancy}
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{#1}}
+%\fancyhead[LO]{\bfseries\nouppercase\leftmark}
+%\fancyhead[RO]{\bfseries\thepage}%\ / \pageref{LastPage}}
+%\fancyhead[RE]{\bfseries\nouppercase\rightmark}
+%\fancyhead[LE]{\bfseries\thepage}%\ / \pageref{LastPage}}
+%\fancyfoot{}
 
 
 
@@ -74,9 +176,9 @@
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \renewcommand{\headheight}{15pt}
 \fancyhead[LO]{\bfseries\nouppercase\leftmark}
-\fancyhead[RO]{\thepage}%\ / \pageref{LastPage}}                                                                                                                                                                                                                                                                                                                                            
-\fancyhead[RE]{\bfseries\nouppercase\leftmark}%{\bfseries\nouppercase\rightmark}                                                                                                                                                                                                                                                                                                            
-\fancyhead[LE]{\thepage}%\ / \pageref{LastPage}}                                                                                                                                                                                                                                                                                                                                            
+\fancyhead[RO]{\thepage}%\ / \pageref{LastPage}}
+\fancyhead[RE]{\bfseries\nouppercase\leftmark}%{\bfseries\nouppercase\rightmark}
+\fancyhead[LE]{\thepage}%\ / \pageref{LastPage}}
 \fancyfoot{}
 
 
@@ -93,12 +195,13 @@
 \input{bib.tex}
 \clearpage{\pagestyle{empty}\cleardoublepage}
 
-%\appendix                                                                                                                                                                                                                                                                                                                                                                                  
-%\input{appendix/not.tex}                                                                                                                                                                                                                                                                                                                                                                   
+%\appendix 
+%\input{appendix/not.tex}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
 
 
 
 \end{document}
+
 

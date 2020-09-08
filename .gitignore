@@ -1,3 +1,5 @@
 #Exclude everything in /aux
 aux/*
+backup
+backup/*
 

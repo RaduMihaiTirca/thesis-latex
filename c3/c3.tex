@@ -1,6 +1,41 @@
-\chapter{Generalizarea Metodei Filon}
+\chapter{Filon Method Generalization}
 
-\section{Oscillatory integrals with }
+\section{The issue}
+
+\paragraph{} The Filon method in its pure form is only suited for \eqref{oscillatoryIntegral}.
+In real-world applications it isn't very often that these type of functions are found. The problem arises with the fact that the $\theta$ \eqref{moments} parameter depends on the oscillation frequency $\omega$ which needs to be constant.
+This means that the oscillation frequency is going to be a function of its on. This function wil have to be monotonous such that the solution that is to be provided is going to work. 
+
+\section{Univariate Dynamic Integral}
+
+The now expanded form of the integrals that are to be calculated is:
+
+\begin{equation}
+    \int_{a}^{b}dxA(x)e^{ih(x)}
+\end{equation}
+
+where $h(x)$ is the new, variable oscillation frequency.
+
+In order to be able to compute this type of integral, we need to bring it into a Filon compatible form. This means that we have to reparameterize $h(x)$ onto a variable that rises linearly from its minimal value $h(x_{min})$, up to its maximal value $h(x_{max})$.
+
+\begin{equation}
+    h(x)=y \label{parameterization}   
+\end{equation}
+
+This is achieved by applying a change of variable:
+
+\begin{equation}
+    y=h(x), \quad \dd y=\dv{f}{x} \dd x, \quad \dd x=\frac{\dd y}{\left(\dv{f}{x}\right)} \label{changeOfVariable}
+\end{equation}
+
+Having previously imposed the constraint of monotony, it is now clear that the $\dv{f}{x}$ denominator won't vanish.
+
+\begin{equation}
+    \int_{y_a}^{y_b}dy\frac{A(x(y))}{\dv{f}{x}\left(x(y)\right)}e^{iy}
+\end{equation}
+
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../th"
