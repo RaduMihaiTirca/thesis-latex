@@ -79,6 +79,8 @@
 \input{c2/c2}
 \input{c3/c3}
 \input{c4/c4}
+\input{c5/c5}
+
 
 
 
@@ -99,109 +101,6 @@
 \end{document}
 
 
-\documentclass[twoside,12pt,a4paper,fleqn]{book}
-\usepackage{calc}
 
-\setlength{\topmargin}{0.15in}
-\setlength{\textwidth}{16.cm}
-\setlength{\textheight}{22cm}
-\setlength{\oddsidemargin}{0.3cm}
-\setlength{\evensidemargin}{210mm-2in-\oddsidemargin-\textwidth}
-\sloppy
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{afterpage}
-\usepackage{bm}
-\usepackage[usenames]{color}
-\usepackage{lastpage}
-\usepackage[nottoc]{tocbibind}
-\usepackage{fancyhdr}
-%\usepackage[sectionbib]{chapterbib}
-\usepackage[hyperindex,breaklinks=true]{hyperref}
-\usepackage[latin1]{inputenc}
-\pagestyle{empty}
-
-
-\begin{document}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\input{title/title.tex}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-
-\setcounter{page}{1}
-\renewcommand{\thepage}{\roman{page}}
-\renewcommand{\chaptername}{\Large{Capitolul}}
-\renewcommand{\contentsname}{\Large{Cuprins}}
-\renewcommand{\figurename}{Figura}
-\renewcommand{\tablename}{Tabelul}
-\renewcommand{\listfigurename}{Lista de figuri}
-\renewcommand{\listtablename}{Lista de tabele}
-
-
-\renewcommand{\bibname}{Bibliografie}
-
-\pagestyle{plain}
-
-\tableofcontents
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\listoffigures
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\listoftables
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-
-
-\renewcommand{\thepage}{\arabic{page}}
-
-\setcounter{page}{1}
-
-%\pagestyle{fancy}
-%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-%\renewcommand{\sectionmark}[1]{\markright{#1}}
-%\fancyhead[LO]{\bfseries\nouppercase\leftmark}
-%\fancyhead[RO]{\bfseries\thepage}%\ / \pageref{LastPage}}
-%\fancyhead[RE]{\bfseries\nouppercase\rightmark}
-%\fancyhead[LE]{\bfseries\thepage}%\ / \pageref{LastPage}}
-%\fancyfoot{}
-
-
-
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{#1}}
-\renewcommand{\headheight}{15pt}
-\fancyhead[LO]{\bfseries\nouppercase\leftmark}
-\fancyhead[RO]{\thepage}%\ / \pageref{LastPage}}
-\fancyhead[RE]{\bfseries\nouppercase\leftmark}%{\bfseries\nouppercase\rightmark}
-\fancyhead[LE]{\thepage}%\ / \pageref{LastPage}}
-\fancyfoot{}
-
-
-
-\input{c1/c1.tex}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-\input{c2/c2.tex}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-\input{c3/c3.tex}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-\input{c4/c4.tex}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-\appendix
-\input{bib.tex}
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-%\appendix 
-%\input{appendix/not.tex}
-
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-
-
-\end{document}
 
 

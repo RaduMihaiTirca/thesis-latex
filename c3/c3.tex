@@ -8,7 +8,7 @@ This means that the oscillation frequency is going to be a function of its on. T
 
 \section{Univariate Dynamic Integral}
 
-The now expanded form of the integrals that are to be calculated is:
+The now expanded\cite{art2} form of the integrals that are to be calculated is:
 
 \begin{equation}
     \int_{a}^{b}dxA(x)e^{ih(x)}
@@ -28,13 +28,67 @@ This is achieved by applying a change of variable:
     y=h(x), \quad \dd y=\dv{f}{x} \dd x, \quad \dd x=\frac{\dd y}{\left(\dv{f}{x}\right)} \label{changeOfVariable}
 \end{equation}
 
-Having previously imposed the constraint of monotony, it is now clear that the $\dv{f}{x}$ denominator won't vanish.
+Having previously imposed the constraint of monotony, it is now clear that the $\dv{f}{x}$ denominator will not vanish.
 
 \begin{equation}
     \int_{y_a}^{y_b}dy\frac{A(x(y))}{\dv{f}{x}\left(x(y)\right)}e^{iy}
 \end{equation}
 
+In this new form of the integral, another issue arises from a numerical stand point. 
+The Filon method requires an equidistant array of values as integration domain.
 
+\begin{equation}
+    x = [x_1, x_2, x_3, ..., x_N]; \quad x_1 = a, x_N = b; \quad step = \Delta x = \frac{b-a}{n}. 
+\end{equation}\\
+
+The newly obtained array: 
+\begin{equation}
+    y_t=h(x)=[h(x_1),h(x_2),h(x_3), ..., h(x_N)]; \quad y_a=h(x_1), y_b=h(x_N) 
+\end{equation}
+
+is evidently not an equidistant one, but inherits the monotony of its generator function $h(x)$, such that:
+$$
+    y_{t1}=h(x_1) < y_{t2}=h(x_2) < y_{t3}=h(x_3) < ... < y_{tN}=h(x_N).
+$$
+
+The next step is to find the $x(y)$ array, bound by $y_a$ and $y_b$ such that:
+
+\begin{equation}
+        y = [y_1, y_2, y_3, ..., y_N]; \quad y_N-y_{N-1}=\Delta y = \frac{y_b-y_a}{N} 
+\end{equation}
+
+\begin{equation}
+    x(y)=h^{-1}(y)=[h^{-1}(y_1), h^{-1}(y_2, h^{-1}(y_3), ...,h^{-1}(y_N)] 
+\end{equation}
+
+\begin{equation}
+    h(x(y)) = [h_1,h_2,h_3, ..., h_N];\quad h_N-h_{N-1}=\Delta h = \frac{h_N-h_1}{N} 
+\end{equation}
+
+This can be done using linear interpolation of $y$ between $y_t$ and $x$.
+
+\begin{equation}
+    x(y)=x_n+(y-y_{tn})\frac{x_{n+1}-x_n}{y_{tn+1}-y_{tn}}.
+\end{equation}
+
+Inf we define:
+\begin{equation}
+    \Phi_i \equiv \frac{A(x(y_i))}{\dv{f}{x}\left(x(y_i)\right)},
+\end{equation}
+
+the \eqref{FilonQ} formula becomes:
+
+\begin{equation}
+    \begin{aligned}
+        \int_{a}^{b}dxA(x)e^{ih(x)} &= \int_{y_a}^{y_b}dy\frac{A(x(y))}{\dv{f}{x}\left(x(y)\right)}e^{iy} \approx \sum_{n=0}^{N-1} Q^{\text {F}}\left(y_{2 n}, y_{2 n+2}\right) \\
+        &= h\left[\mathrm{i} \alpha\left(\Phi_{0} \mathrm{e}^{\mathrm{i}  y_{0}}-\Phi_{2 N} \mathrm{e}^{\mathrm{i}  y_{2 N}}\right)\right.\\
+        &+\beta\left(\sum_{n=0}^{N} \Phi_{2 n} \mathrm{e}^{\mathrm{i}  y_{2 n}}-\frac{1}{2}\left[\Phi_{2 N} \mathrm{e}^{\mathrm{i}  y_{2 N}}+\Phi_{0} \mathrm{e}^{\mathrm{i}  y_{0}}\right]\right) \\
+        &\left.+\gamma \sum_{n=1}^{N} \Phi_{2 n-1} \mathrm{e}^{\mathrm{i}  y_{2 n-1}}\right] \\
+    \end{aligned} \label{FilonVarQ}
+\end{equation} 
+
+
+where $\alpha, \beta, \gamma$ are still defined by \eqref{abg}, but  $\theta=h=\frac{y_b-y_a}{N}$. 
 
 %%% Local Variables:
 %%% mode: latex
