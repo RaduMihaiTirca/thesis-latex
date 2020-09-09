@@ -1,18 +1,21 @@
 % !TeX root = ../diss.tex
-\chapter{Metoda Filon}
+\chapter{The Filon Method}
 \label{cap:cap2}
 
 \section{Numerical integration}
 %Rectangle rule
 
 \paragraph{} Numerical integration is comprised of a broad family of algorithms that aim to numerically compute values of finite integrals.
+
 All can be traced back to this simplest form:
 
 \begin{equation}
     \int_a^b f(x) dx \approx (b-a) f\left(\frac{a+b}{2}\right),\label{rectangle}
 \end{equation}
 
-which is known as "rectangle rule". This is the procedure trough which the area underneath a function, up to the $"x"$ axis, is approximated with a rectangle. This gives a very rough approximate of the actual integral
+which is known as "rectangle rule". This is the procedure trough which the area underneath a function, up to the $"x"$ axis, is approximated with a rectangle. 
+
+This gives a very rough approximate of the actual integral
 
 
 %Trapezoidal rule
@@ -27,7 +30,8 @@ which approximates the area with a trapezoid, thus giving it the name "trapezoid
 
 %Composite Trapezoidal rule
 
-For both of these methods, the accuracy of the result can be virtually infinitely improved by dividing the $[a,b]$ interval in finer and finer $n$ subintervals.
+For both of these methods, the accuracy of the result can be virtually infinitely improved by dividing the $[a,b]$ interval in finer and finer $n$ sub-intervals.
+
 This, in the case of the "trapezoidal rule" yields the following formula:
 
 \begin{equation}
@@ -35,14 +39,19 @@ This, in the case of the "trapezoidal rule" yields the following formula:
 \end{equation}
 where the sub intervals are of the form $ [a+kh,a+(k+1)h] \subset [a,b], h=\frac{b-a}{n} $.
 
-These methods are generally referred to as "quadratures". The therm, "quadrature", has been historically used to describe the process of determining area. Now, it is somewhat loosely used to describe pretty much all numerical integration methods.
+\vspace{0.25in}
+
+These methods are generally referred to as "quadratures". The term, "quadrature", has been historically used to describe the process of determining area. Now, it is somewhat loosely used to describe pretty much all numerical integration methods.
 
 \section{Quadrature}
 
 \paragraph{} Quadrature rules can be derived by constructing interpolating functions that are easy to integrate numerically.
+
 The interpolating function can be a polynomial of degree zero (a constant function) like in the case of the rectangle rule\eqref{rectangle},
 where the interpolation point is $\left(\frac{a+b}{2},f\left(\frac{a+b}{2}\right)\right)$. Similarly, for the trapezoidal rule\eqref{trapezoid}, the interpolating function is a polynomial of degree 1 (a straight line) that passes through two points $(a,f(a))$ and $(b,f(b))$. 
-In the case of the composite rule\eqref{composite}, the number of interpolation points is directly proportional with the number of subintervals or steps, $n$. Interpolation with polynomials evaluated at equally spaced points yields a Newton-Cotes formula of which the previously mentioned methods ar a type.
+In the case of the composite rule\eqref{composite}, the number of interpolation points is directly proportional with the number of sub-intervals or steps, $n$.
+
+Interpolation with polynomials evaluated at equally spaced points yields a Newton-Cotes formula of which the previously mentioned methods are a type.
 
 \paragraph{} We have the general quadrature formula: 
 
@@ -56,7 +65,8 @@ In the case of the composite rule\eqref{composite}, the number of interpolation 
 
 %To be completed
 
-\section{Oscillatory integrals with constant oscillation frequency}
+\section{Oscillatory integrals with constant oscillation
+ frequency}
 
 
 The types of integrals that we address are of the form:
@@ -65,11 +75,12 @@ The types of integrals that we address are of the form:
     I[a,b] = \int_a^b dx \varphi(x)e^{i\omega x}\label{oscillatoryIntegral}
 \end{equation}
 
-\paragraph{}Here we find $\varphi(x)$, the preexponential and our oscillatory component $e^{i\omega x}$ with the constant oscillation frequency $\omega$.
-Under the assumption that $\varphi(x)$ is slowly oscillating, Filon suggests dividing the integration interval in $N$ subintervals and apply a 3-point quadrature scheme on each of these, where only the preexponential function $\varphi(x)$ is interpolated as opposed to the whole integrand.
+\paragraph{}Here we find $\varphi(x)$, the pre-exponential and our oscillatory component $e^{i\omega x}$ with the constant oscillation frequency $\omega$.
+
+Under the assumption that $\varphi(x)$ is slowly oscillating, Filon suggests dividing the integration interval in $N$ sub-intervals and apply a 3-point quadrature scheme on each of these, where only the pre-exponential function $\varphi(x)$ is interpolated as opposed to the whole integrand.\cite{num}
 Afterwards, the entire integral is approximated at $2n+1$ nodes. 
 
-\paragraph{}Each subinterval is interpolated by a 3-point scheme:
+\paragraph{}Each sub-interval is interpolated by a 3-point scheme:
 
 \begin{equation}
     I(x_n,x_{n+2}) = \int_{x_n}^{x_{n+2}} dx \varphi(x)e^{i\omega x} \approx w_n\varphi_n+w_{n+1}\varphi_{n+1}+w_{n+2}\varphi_{n+2}\label{subintervalInterpolation}
@@ -89,7 +100,7 @@ The next step is to find the weights $w_n$. This is achieved by integrating over
     J_{l}=:\int_{x_{n}}^{x_{n+2}} x^{l} \mathrm{e}^{\mathrm{i} \omega x}=w_{n} x_{n}^{l}+w_{n+1} x_{n+1}^{l}+w_{n+2} x_{n+2}^{l} \quad l \in\{0,1,2\}
 \end{equation}
 
-It is an important assumption of the Filon method that the $J_l$ moments can be solved analyticall.  
+It is an important assumption of the Filon method that the $J_l$ moments can be solved analytical.  
 After solving the system, we find: 
 
 \begin{equation}
@@ -105,6 +116,7 @@ After solving the system, we find:
 
 with the parameter $\Theta$ defined as $\Theta=\omega h$ and $h$ being the step size ($h=\frac{b-a}{N}$).
 
+
 \paragraph{}Inserting all this in the equation\eqref{subintervalInterpolation} and some further processing we find:
 
 \begin{equation}
@@ -115,7 +127,9 @@ with the parameter $\Theta$ defined as $\Theta=\omega h$ and $h$ being the step 
         &\left.+\gamma \varphi_{n+1} \mathrm{e}^{\mathrm{i} \omega x_{n+1}}\right]
     \end{aligned}
 \end{equation}
+
 with $\alpha, \beta, \gamma$ defined as:
+
 \begin{equation}
     \begin{aligned}
         &\alpha=\alpha(\Theta)=\frac{2 \Theta^{2}-2 \sin ^{2}(\Theta)+\sin (2 \Theta) \Theta}{2 \Theta^{3}}\\
@@ -123,7 +137,7 @@ with $\alpha, \beta, \gamma$ defined as:
         &\gamma=\gamma(\Theta)=\frac{4(-\Theta \cos (\Theta)+\sin (\Theta))}{\Theta^{3}}
     \end{aligned} \label{abg}
 \end{equation}
-
+\vspace{0.25in}
 It should be noted that for small $\Theta$, these parameters have the Taylor expansions:
 
 \begin{equation}
@@ -134,7 +148,9 @@ It should be noted that for small $\Theta$, these parameters have the Taylor exp
         \end{array}.
 \end{equation}
 
-The summation of these contributions over all the subintervals, brings us to the textbook formula for the Filon quadrature:
+\vspace{0.25in}
+
+The summation of these contributions over all the sub-intervals, brings us to the textbook formula for the Filon quadrature:
 
 \begin{equation}
     \begin{aligned}
@@ -146,6 +162,9 @@ The summation of these contributions over all the subintervals, brings us to the
     \end{aligned} \label{FilonQ}
 \end{equation}
 
+\vspace{0.25in}
+
+This method is similar to the ones presented in \cite{ise} \cite{book1} \cite{fcc}, but was mostly developed as a result of \cite{con}.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../th"

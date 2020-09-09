@@ -1,6 +1,49 @@
 \chapter{Conclusions}
 
+\section{Summary}
+
+\paragraph{} 
+The purpose of this paper was to generate an implementation of the Filon method for the numerical computation of rapidly oscillating integrals. This type of integrals can be very difficult and computationally expensive to compute. Even more so in an efficient manner.\par
+
+\vspace{0.1in}
+
+ In the second chapter, we delved into the construction of quadratures, or numerical integration methods, in order to set the scene for the more complex algorithms that follow. In the second part of this chapter, we developed the formulation for the case of integrals with constant oscillation frequencies.\par
+ 
+
+\vspace{0.1in}
+
+In the third chapter we elaborated on a set of steps that need to be taken for the conversion of a more general version of a highly oscillating function, such that it can be computed with the Filon method.\par
+
+\vspace{0.1in}
+
+As it has become clear in the fourth chapter \ref{figGraphAll}, in the simple, constant oscillating frequency case, the Filon quadrature method of numerical integration brings a significant improvement over the conventional (trapezoidal) method of numerical integration.\par
+
+\vspace{0.1in}
+
+The same cannot be said about the generalized case \ref{figGraphGen}, where the gains in performance are not as significant. This is most probably caused by the relative inefficiency
+of interpolation \eqref{linearInterpol}
+
+\vspace{0.1in}
+
+\section{Future Prospects}
+
+The performance gained by using the Filon method becomes evident in the case of constant oscillation case (Chapter 2),
+even here, however, there is plenty room for improvement.
+
+This could be realized by introducing parallelism for asynchron computation of the two independent sums
+found in \eqref{FilonQ}. Even though this would not bring a phenomenal improvement, it would still have an impact
+in the case of very heavy workloads.
+
+\vspace{0.1in}
 
 
-\paragraph{} Highly oscillating functions can be really challenging to compute. Even more so in an efficient manner.
-As has been seen in the previous chapter, in the simple, constant oscillating frequency case, the Filon quadrature method of numerical integration brings a significant improvement over the conventional (trapezoidal) method of numerical integration.
+In the generalized case, it has been found that this process of interpolation is very
+time expensive. Here, the most obvious improvement would be the introduction of recursion in finding the
+neighboring values for the interpolation. In addition, the same approach of parallelism
+would be applicable for \eqref{FilonVarQ} 
+
+\vspace{0.1in}
+
+Even though this method was developed in the early twentieth century, 
+it has reemerged as a more than capable method of significant relevance as our technology
+has advanced to support the requirements of modern computational physics.

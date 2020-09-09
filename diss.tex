@@ -18,6 +18,9 @@
 \usepackage{pgfplotstable} % Generates table from .csv
 \usepackage{physics}
 \usepackage{url}
+\usepackage{float}
+\usepackage{listings}
+
 
 \titleformat{\chapter}
   {\Large\bfseries} % format
@@ -88,16 +91,19 @@
 
 
 
-\renewcommand{\contentsname}{Referin\c{t}e}
-\renewcommand\bibname{Referin\c{t}e} %
-\addcontentsline{toc}{chapter}{Referin\c{t}e}
-\markboth{Referin\c{t}e}{Referin\c{t}e} %
+
+\renewcommand{\contentsname}{References}
+\renewcommand\bibname{References} %
+\addcontentsline{toc}{chapter}{References}
+\markboth{References}{References} %
 \bibliographystyle{unsrt}
 %
 %\bibliographystyle{plain}
 
 \bibliography{Referinte}
+\pagebreak
 
+\input{Annexes/Annexes.tex}
 
 \end{document}
 
