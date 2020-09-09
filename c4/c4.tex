@@ -1,12 +1,38 @@
-\chapter{Rezultate Numerice}
+\chapter{Numerical Results}
 
-\section{Metoda Filon}
+\section{Filon Method}
+
+The practical implementation of this method is done by using two functions. In accordance with \eqref{oscillatoryIntegral}, $I_1$ and $I_2$ are defined:
+
+
+\begin{equation}
+      I_1=\int_a^{b}dx cos(x)e^{i\omega x}
+\end{equation}
+
+\begin{equation}
+      I_2 =\int_a^{b}dx (3x+x^2+x^3)e^{i\omega x} 
+\end{equation}
+
+These two integrals both have analytical solutions:
+
+\begin{equation}
+  I_1=\frac{e^{i a \omega } (\sin (a)+i \omega  \cos (a))-i e^{i b \omega } (\omega  \cos (b)-i \sin (b))}{\omega ^2-1}
+\end{equation}
+
+\begin{equation}
+  \begin{aligned}
+    I_2=\frac{1}{\omega^5}i (&e^{i a \omega } (a (a^3+a+3) \omega ^4+i (4 a^3+2 a+3) \omega ^3-2 (6 a^2+1) \omega ^2-24 i a \omega +24)\\
+                             &-e^{i b \omega } (b (b^3+b+3) \omega ^4+i (4 b^3+2 b+3) \omega ^3-2 (6 b^2+1) \omega ^2-24 i b \omega +24))
+  \end{aligned}
+\end{equation}
+
+The following numerical results were produced using "filonQuadrature.cpp" code,found in annex 1.
 
 
 
 \begin{table}[h!]
     \begin{center}
-      \caption{Relative error of trapezoidal method $\delta_{Q^T}$ and Filon quadrature "$\delta_{Q^F}$" vs no. of steps $N$}
+      \caption{Relative error of trapezoidal method "$\delta_{Q^T}$" and Filon quadrature "$\delta_{Q^F}$" vs no. of steps $N$ on $I_1$ with $a=0,b=100,\omega=10$.}
       \label{table1}
       \pgfplotstabletypeset[
         multicolumn names, % allows to have multicolumn names
@@ -34,8 +60,8 @@
 
   \begin{table}[h!]
     \begin{center}
-      \caption{Relative error of trapezoidal method $\delta_{Q^T}$ and Filon quadrature "$\delta_{Q^F}$" vs no. of steps $N$}
-      \label{table1}
+      \caption{Relative error of trapezoidal method "$\delta_{Q^T}$" and Filon quadrature "$\delta_{Q^F}$" vs no. of steps $N$ on $I_1$ with $a=0,b=100,\omega=10^3$.}
+      \label{table2}
       \pgfplotstabletypeset[
         multicolumn names, % allows to have multicolumn names
         col sep=comma, % the seperator in our .csv file
@@ -59,7 +85,61 @@
     \end{center}
   \end{table}
 
-\section{Generalizet }
+  \begin{table}[h!]
+    \begin{center}
+      \caption{Relative error of trapezoidal method "$\delta_{Q^T}$" and Filon quadrature "$\delta_{Q^F}$" vs no. of steps $N$ on $I_2$ with $a=0,b=100,\omega=10$.}
+      \label{table3}
+      \pgfplotstabletypeset[
+        multicolumn names, % allows to have multicolumn names
+        col sep=comma, % the seperator in our .csv file
+        display columns/0/.style={
+          column name=$N$, % name of first column
+          column type={S},string type},  % use siunitx for formatting
+        display columns/1/.style={
+          column name=$\delta_{Q^T}$,
+          column type={S},string type},
+        display columns/2/.style={
+          column name=$\delta_{Q^F}$,
+          column type={S},string type},
+        every head row/.style={
+          before row={\toprule}, % have a rule at top
+          after row={
+               & \% & \% \\ % the units seperated by &
+              \midrule} % rule under units
+              },
+          every last row/.style={after row=\bottomrule}, % rule at bottom
+      ]{c4/relErrorPolyOmega10.csv} % filename/path to file
+    \end{center}
+  \end{table}
+
+  \begin{table}[h!]
+    \begin{center}
+      \caption{Relative error of trapezoidal method "$\delta_{Q^T}$" and Filon quadrature "$\delta_{Q^F}$" vs no. of steps $N$ on $I_2$ with $a=0,b=100,\omega=10^3$.}
+      \label{table4}
+      \pgfplotstabletypeset[
+        multicolumn names, % allows to have multicolumn names
+        col sep=comma, % the seperator in our .csv file
+        display columns/0/.style={
+          column name=$N$, % name of first column
+          column type={S},string type},  % use siunitx for formatting
+        display columns/1/.style={
+          column name=$\delta_{Q^T}$,
+          column type={S},string type},
+        display columns/2/.style={
+          column name=$\delta_{Q^F}$,
+          column type={S},string type},
+        every head row/.style={
+          before row={\toprule}, % have a rule at top
+          after row={
+               & \% & \% \\ % the units seperated by &
+              \midrule} % rule under units
+              },
+          every last row/.style={after row=\bottomrule}, % rule at bottom
+      ]{c4/relErrorPolyOmega1000.csv} % filename/path to file
+    \end{center}
+  \end{table}
+
+\section{Generalized Filon Method}
 
 
 %%% Local Variables:
